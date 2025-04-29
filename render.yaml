@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: get-audit
-    env: node
-    plan: free
-    buildCommand: |
-      npm install
-      npx puppeteer install
-    startCommand: npm start
