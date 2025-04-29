@@ -1,6 +1,8 @@
 {
   "name": "get-audit",
   "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
     "postinstall": "npx puppeteer install"
@@ -8,7 +10,7 @@
   "dependencies": {
     "express": "^4.18.3",
     "body-parser": "^1.20.2",
-    "pa11y": "^6.0.1",
+    "pa11y": "^6.1.1",
     "puppeteer": "^21.3.8"
   }
 }
