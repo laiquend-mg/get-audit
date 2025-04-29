@@ -1,9 +1,8 @@
-process.env.PUPPETEER_CACHE_DIR = '/opt/render/.cache/puppeteer';
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const pa11y = require('pa11y');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 
 const app = express();
 const PORT = 3000;
@@ -26,9 +25,9 @@ app.post('/check', async (req, res) => {
 
     try {
         const browser = await puppeteer.launch({
-            headless: true,
-            ignoreHTTPSErrors: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+          executablePath: '/usr/bin/google-chrome',
+          args: ['--no-sandbox', '--disable-setuid-sandbox'],
+          headless: true
         });
 
         const result = await pa11y(url, {
