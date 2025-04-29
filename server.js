@@ -2,8 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const pa11y = require('pa11y');
-const puppeteer = require('puppeteer');
-const chromePath = require('puppeteer').executablePath();
+const { executablePath } = require('puppeteer');
 
 
 const app = express();
