@@ -2,7 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const pa11y = require('pa11y');
-const puppeteer = require('puppeteer-core');
+const puppeteer = require('puppeteer');
+const chromePath = require('puppeteer').executablePath();
+
 
 const app = express();
 const PORT = 3000;
@@ -25,9 +27,9 @@ app.post('/check', async (req, res) => {
 
     try {
         const browser = await puppeteer.launch({
-          executablePath: '/usr/bin/google-chrome',
+          executablePath: chromePath,
+          headless: true,
           args: ['--no-sandbox', '--disable-setuid-sandbox'],
-          headless: true
         });
 
         const result = await pa11y(url, {
