@@ -10,7 +10,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-  // Allow CORS for local frontend development
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
@@ -26,7 +25,7 @@ app.post('/check', async (req, res) => {
   try {
     const browser = await puppeteer.launch({
       executablePath: puppeteer.executablePath(),
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
 
     const result = await pa11y(url, {
@@ -35,7 +34,6 @@ app.post('/check', async (req, res) => {
 
     await browser.close();
 
-    // Optional: group results by types
     const grouped = {
       siteName: url,
       contrastIssues: result.issues.filter(i => i.code.includes('color-contrast')),
@@ -49,7 +47,7 @@ app.post('/check', async (req, res) => {
         !i.code.includes('element') &&
         !i.code.includes('navigation') &&
         !i.code.includes('form')
-      )
+      ),
     };
 
     res.json({ result: grouped });
