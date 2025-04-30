@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "postinstall": "npx puppeteer browsers install chrome"
+    "start": "npx puppeteer browsers install chrome && node server.js"
   },
   "keywords": [],
   "author": "",
