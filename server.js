@@ -58,12 +58,12 @@ function groupIssues(issues) {
     const categorize = (filter) => issues.filter(filter);
 
     return {
-        contrastIssues: categorize(i => i.code.includes('color-contrast')),
-        altIssues: categorize(i => i.code.includes('image-alt') || i.message.includes('alt attribute')),
-        elementIssues: categorize(i => i.message.includes('element') || i.code.includes('heading-order')),
-        navigationIssues: categorize(i => i.message.includes('keyboard') || i.code.includes('focusable')),
-        formIssues: categorize(i => i.message.includes('form') || i.code.includes('label')),
-        otherIssues: categorize(i => true), // all for fallback
+        contrastIssues: categorize(i => i.code.toLowerCase().includes('1_4_3') || i.message.toLowerCase().includes('color contrast')),
+        altIssues: categorize(i => i.code.toLowerCase().includes('image-alt') || i.message.toLowerCase().includes('alt attribute')),
+        elementIssues: categorize(i => i.message.toLowerCase().includes('element') || i.code.toLowerCase().includes('heading-order')),
+        navigationIssues: categorize(i => i.message.toLowerCase().includes('keyboard') || i.code.toLowerCase().includes('focusable')),
+        formIssues: categorize(i => i.message.toLowerCase().includes('form') || i.code.toLowerCase().includes('label')),
+        otherIssues: categorize(i => true), // fallback
     };
 }
 
