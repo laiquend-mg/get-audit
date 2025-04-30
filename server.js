@@ -58,7 +58,7 @@ function groupIssues(issues) {
     const categorize = (filter) => issues.filter(filter);
 
     return {
-        contrastIssues: categorize(i => i.code.toLowerCase().includes('1_4_3') || i.message.toLowerCase().includes('color contrast')),
+        contrastIssues: categorize(i => i.code.toLowerCase().includes('1_4_3') || i.message.toLowerCase().includes('contrast')),
         altIssues: categorize(i => i.code.toLowerCase().includes('image-alt') || i.message.toLowerCase().includes('alt attribute')),
         elementIssues: categorize(i => i.message.toLowerCase().includes('element') || i.code.toLowerCase().includes('heading-order')),
         navigationIssues: categorize(i => i.message.toLowerCase().includes('keyboard') || i.code.toLowerCase().includes('focusable')),
