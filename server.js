@@ -35,11 +35,13 @@ app.post('/check', async (req, res) => {
 
         const result = await pa11y(url, {
             browser: browser,
-            standard: 'WCAG2AAA',  // WCAG level AA (you can change to WCAG2AAA for stricter checks)
+            standard: 'WCAG2AAA',  // WCAG level AAA
             timeout: 30000,  // Timeout after 30 seconds
             includeNotices: true,
             includeWarnings: true,  // Include warnings in the result (might show important info)
             debug: true,  // Enable debug mode to see detailed logs
+            wait: 5000, // Wait 5s after page load
+            waitFor: 'body', // Wait for 'body' to ensure page is rendered
         });
 
         await browser.close();
